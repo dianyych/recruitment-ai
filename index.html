@@ -616,6 +616,10 @@
   </div>
 
   <div style="margin-bottom:0.4rem;">
+    Зум: <span id="zoomVal">1.0</span>x
+    <input type="range" min="10" max="25" value="10" oninput="update()" id="zoomSlider" style="width:100%;margin-top:2px;">
+  </div>
+  <div style="margin-bottom:0.4rem;">
     X фото: <span id="xVal">72</span>%
     <input type="range" min="0" max="100" value="72" oninput="update()" id="xSlider" style="width:100%;margin-top:2px;">
   </div>
@@ -634,11 +638,18 @@ function update() {
   var x = document.getElementById('xSlider').value;
   var y = document.getElementById('ySlider').value;
   var dark = document.getElementById('darkSlider').value;
+  var zoom = (parseInt(document.getElementById('zoomSlider').value) / 10).toFixed(1);
   document.getElementById('xVal').textContent = x;
   document.getElementById('yVal').textContent = y;
   document.getElementById('darkVal').textContent = dark;
+  document.getElementById('zoomVal').textContent = zoom;
   var img = document.querySelector('.hero-bg img');
-  img.style.setProperty('object-position', x+'% '+y+'%', 'important');
+  img.style.setProperty('object-fit', 'none', 'important');
+  img.style.setProperty('width', (zoom * 100) + '%', 'important');
+  img.style.setProperty('height', (zoom * 100) + '%', 'important');
+  img.style.setProperty('object-position', 'unset', 'important');
+  img.style.setProperty('left', (x - 50) + '%', 'important');
+  img.style.setProperty('top', (y - 50) + '%', 'important');
   var overlay = document.getElementById('heroOverlay');
   overlay.style.setProperty('background',
     'linear-gradient(to right, rgba(14,18,16,0.95) '+dark+'%, rgba(14,18,16,0.55) '+(parseInt(dark)+27)+'%, rgba(14,18,16,0.0) 100%), linear-gradient(to top, rgba(14,18,16,0.98) 20%, rgba(14,18,16,0.0) 50%)',
@@ -648,7 +659,8 @@ function copyVals() {
   var x = document.getElementById('xSlider').value;
   var y = document.getElementById('ySlider').value;
   var dark = document.getElementById('darkSlider').value;
-  var txt = 'X='+x+' Y='+y+' Dark='+dark;
+  var zoom = (parseInt(document.getElementById('zoomSlider').value) / 10).toFixed(1);
+  var txt = 'Zoom='+zoom+' X='+x+' Y='+y+' Dark='+dark;
   navigator.clipboard.writeText(txt).catch(function(){});
   alert('Скопійовано: '+txt);
 }
