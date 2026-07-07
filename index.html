@@ -373,18 +373,33 @@
 
     /* MOBILE */
     @media (max-width: 600px) {
+      .hero {
+        min-height: 380px;
+      }
+
       .hero-bg img {
         transform: none !important;
         object-fit: cover;
-        object-position: 85% 5%;
+        object-position: 72% 0%;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
       }
 
+      .hero-content {
+        max-width: 58%;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.52rem;
+        letter-spacing: 0.14em;
+      }
+
       .hero-overlay {
-        background: linear-gradient(to top, rgba(14,18,16,0.98) 40%, rgba(14,18,16,0.0) 65%) !important;
+        background:
+          linear-gradient(to right, rgba(14,18,16,0.97) 42%, rgba(14,18,16,0.55) 65%, rgba(14,18,16,0.0) 100%),
+          linear-gradient(to top, rgba(14,18,16,0.98) 20%, rgba(14,18,16,0.0) 50%) !important;
         max-width: 100%;
       }
 
@@ -592,5 +607,51 @@
   </div>
 
 </div>
+
+<!-- MOBILE PHOTO ADJUSTER -->
+<div id="mobileAdj" style="position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.92);padding:1rem;z-index:9999;font-family:monospace;font-size:12px;color:#fff;border-top:2px solid #00E6B4;">
+  <div style="display:flex;justify-content:space-between;margin-bottom:0.6rem;">
+    <span style="color:#00E6B4;font-weight:bold;">📱 Моб. налаштування</span>
+    <button onclick="copyVals()" style="background:#00E6B4;color:#000;border:none;padding:0.2rem 0.7rem;border-radius:4px;font-weight:bold;cursor:pointer;">Скопіювати</button>
+  </div>
+
+  <div style="margin-bottom:0.4rem;">
+    X фото: <span id="xVal">72</span>%
+    <input type="range" min="0" max="100" value="72" oninput="update()" id="xSlider" style="width:100%;margin-top:2px;">
+  </div>
+  <div style="margin-bottom:0.4rem;">
+    Y фото: <span id="yVal">0</span>%
+    <input type="range" min="0" max="100" value="0" oninput="update()" id="ySlider" style="width:100%;margin-top:2px;">
+  </div>
+  <div style="margin-bottom:0.4rem;">
+    Затемнення зліва: <span id="darkVal">38</span>%
+    <input type="range" min="10" max="70" value="38" oninput="update()" id="darkSlider" style="width:100%;margin-top:2px;">
+  </div>
+</div>
+
+<script>
+function update() {
+  var x = document.getElementById('xSlider').value;
+  var y = document.getElementById('ySlider').value;
+  var dark = document.getElementById('darkSlider').value;
+  document.getElementById('xVal').textContent = x;
+  document.getElementById('yVal').textContent = y;
+  document.getElementById('darkVal').textContent = dark;
+  var img = document.querySelector('.hero-bg img');
+  img.style.setProperty('object-position', x+'% '+y+'%', 'important');
+  var overlay = document.getElementById('heroOverlay');
+  overlay.style.setProperty('background',
+    'linear-gradient(to right, rgba(14,18,16,0.95) '+dark+'%, rgba(14,18,16,0.55) '+(parseInt(dark)+27)+'%, rgba(14,18,16,0.0) 100%), linear-gradient(to top, rgba(14,18,16,0.98) 20%, rgba(14,18,16,0.0) 50%)',
+    'important');
+}
+function copyVals() {
+  var x = document.getElementById('xSlider').value;
+  var y = document.getElementById('ySlider').value;
+  var dark = document.getElementById('darkSlider').value;
+  var txt = 'X='+x+' Y='+y+' Dark='+dark;
+  navigator.clipboard.writeText(txt).catch(function(){});
+  alert('Скопійовано: '+txt);
+}
+</script>
 </body>
 </html>
