@@ -483,6 +483,33 @@
   .terms-link { color:var(--txt-3); text-decoration:underline; text-underline-offset:3px; cursor:pointer; background:none; border:none; font:inherit; padding:0; }
   .terms-link:hover { color:var(--teal); }
 
+  .join-modal {
+    background:#101413; border:1px solid var(--line-2); border-radius:1.2rem;
+    max-width:440px; width:100%; padding:1.7rem;
+  }
+  .join-modal h4 { font-size:1.15rem; font-weight:750; margin-bottom:0.35rem; }
+  .join-modal .jsub { font-size:0.84rem; color:var(--txt-2); line-height:1.5; margin-bottom:1.3rem; }
+  .jcard {
+    display:flex; align-items:center; gap:0.9rem;
+    background:var(--surface-2); border:1px solid var(--line-2); border-radius:0.9rem;
+    padding:0.95rem 1.1rem; margin-bottom:0.65rem; transition:border-color 0.15s;
+  }
+  .jcard:hover { border-color:var(--teal); }
+  .jcard .jic {
+    flex-shrink:0; width:38px; height:38px; border-radius:50%;
+    background:var(--teal-dim); color:var(--teal);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .jcard .jic svg { width:19px; height:19px; fill:currentColor; }
+  .jcard b { display:block; font-size:0.92rem; font-weight:650; }
+  .jcard span { display:block; font-size:0.76rem; color:var(--txt-3); margin-top:0.1rem; }
+  .jcard .jtag { margin-left:auto; font-size:0.78rem; color:var(--teal); font-weight:600; flex-shrink:0; }
+  .join-close {
+    display:block; width:100%; text-align:center; margin-top:1rem;
+    background:none; border:none; color:var(--txt-3); font:inherit; font-size:0.82rem; cursor:pointer;
+  }
+  .join-close:hover { color:var(--txt); }
+
   .terms-overlay {
     position:fixed; inset:0; z-index:90; display:none;
     align-items:center; justify-content:center; padding:1.5rem;
@@ -544,7 +571,7 @@
 <header class="top">
   <div class="wrap top-in">
     <div class="logo" onclick="location.hash='#/'">Діана Солдатова <em>· AI Рекрутинг</em></div>
-    <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+    <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
   </div>
   <div class="wrap">
     <nav class="tabs">
@@ -572,7 +599,7 @@
         </div>
         <p class="sub">Мене звуть Діана. Я працюю у рекрутингу понад 8 років. Останній рік мій фокус – на автоматизаціях процесів рекрутменту за допомогою AI-технологій. На воркшопах передаю власний досвід: як автоматизувати рекрутинг з нуля, які інструменти для цього потрібні та як вибудувати ефективну інфраструктуру під автоматизації. Нижче – повна програма воркшопів і тарифи.</p>
         <div class="hero-ctas">
-          <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+          <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
           <a class="cta ghost" href="#/pricing">Тарифи й формати</a>
         </div>
         <div class="hero-social">
@@ -791,7 +818,7 @@
       <aside class="buy">
         <div class="bp">Програма 1</div>
         <div class="bd">1 воркшоп · 3 години · онлайн</div>
-        <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
         <a class="cta ghost" style="display:block;text-align:center;" href="#/pricing">Дивитись тарифи</a>
         <div class="upsell">Доступна окремо або в пакеті з програмами 2 і 3 – деталі на вкладці <b>«Тарифи»</b></div>
         <div class="feat">
@@ -884,7 +911,7 @@
       <aside class="buy">
         <div class="bp">Програма 2</div>
         <div class="bd">1 воркшоп · 3 години · онлайн</div>
-        <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
         <a class="cta ghost" style="display:block;text-align:center;" href="#/pricing">Дивитись тарифи</a>
         <div class="upsell">Проходить у зв'язці з програмою 1 – інфраструктура першого воркшопу потрібна для запуску сорсера. Пакети – на вкладці <b>«Тарифи»</b></div>
         <div class="feat">
@@ -992,7 +1019,7 @@
       <aside class="buy">
         <div class="bp">Програма 3</div>
         <div class="bd">1 воркшоп · 2 дні · 6 годин · онлайн</div>
-        <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
         <a class="cta ghost" style="display:block;text-align:center;" href="#/pricing">Дивитись тарифи</a>
         <div class="upsell">Доступна окремо (тариф «AI-агенти») або в повній програмі інтенсиву – деталі на вкладці <b>«Тарифи»</b></div>
         <div class="feat">
@@ -1033,7 +1060,7 @@
           <li>Розбір архітектури побудови скілів</li>
           <li><b>Практика:</b> автоматизація флоу запуску вакансії + власний скіл для оцінки кандидатів</li>
         </ul>
-        <a class="cta ghost" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta ghost" href="#" onclick="openJoin(event)">Записатись</a>
       </div>
       <div class="tier hot">
         <div class="tn">Програми 1 та 2</div>
@@ -1051,7 +1078,7 @@
           <li><b>Практика:</b> створення AI-сорсера для пошуку у LinkedIn</li>
           <li><b>Практика:</b> створення веб-додатку для розсилок</li>
         </ul>
-        <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
       </div>
       <div class="tier hot">
         <div class="tn">Програми 1, 2 та 3</div>
@@ -1069,7 +1096,7 @@
           <li>Конектори: Telegram, Slack, Notion, ATS</li>
           <li><b>Практика:</b> створення власного AI-агента</li>
         </ul>
-        <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta" href="#" onclick="openJoin(event)">Записатись</a>
       </div>
       <div class="tier">
         <div class="tn">Програма 3</div>
@@ -1085,7 +1112,7 @@
           <li>Конектори: Telegram, Slack, Notion, ATS</li>
           <li><b>Практика:</b> створення власного AI-агента</li>
         </ul>
-        <a class="cta ghost" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
+        <a class="cta ghost" href="#" onclick="openJoin(event)">Записатись</a>
       </div>
     </div>
 
@@ -1214,6 +1241,24 @@
   </div>
 </footer>
 
+<div class="terms-overlay" id="join" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="join-modal">
+    <h4>Записатись на воркшопи</h4>
+    <div class="jsub">Напишіть у Telegram – відповімо на питання, підкажемо формат і надішлемо деталі оплати.</div>
+    <a class="jcard" href="https://t.me/dianyych" target="_blank" rel="noopener">
+      <span class="jic"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.47c-.144.646-.537.805-1.087.502l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.81l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.445c.537-.194 1.006.13.37.755z"/></svg></span>
+      <span><b>Diana Soldatova</b><span>Recruitment AI Trainer · @dianyych</span></span>
+      <span class="jtag">Написати →</span>
+    </a>
+    <a class="jcard" href="https://t.me/YuliiaBondarenkoo" target="_blank" rel="noopener">
+      <span class="jic"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.47c-.144.646-.537.805-1.087.502l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.81l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.445c.537-.194 1.006.13.37.755z"/></svg></span>
+      <span><b>Yuliia Bondarenko</b><span>L&amp;D Coordinator · @YuliiaBondarenkoo</span></span>
+      <span class="jtag">Написати →</span>
+    </a>
+    <button class="join-close" onclick="document.getElementById('join').classList.remove('open')">Закрити</button>
+  </div>
+</div>
+
 <div class="terms-overlay" id="terms" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="terms-modal">
     <div class="terms-head">
@@ -1238,6 +1283,14 @@
 </div>
 
 <script>
+  function openJoin(e) {
+    e.preventDefault();
+    document.getElementById('join').classList.add('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.terms-overlay.open').forEach(o => o.classList.remove('open'));
+  });
+
   const pages = document.querySelectorAll('[data-page]');
   const navs = document.querySelectorAll('[data-nav]');
   const routes = {
@@ -1249,6 +1302,7 @@
   function route() {
     const h = location.hash.replace(/^#/, '');
     const page = routes[h] || 'home';
+    document.querySelectorAll('.terms-overlay.open').forEach(o => o.classList.remove('open'));
     pages.forEach(p => { p.hidden = p.dataset.page !== page; });
     navs.forEach(a => a.classList.toggle('on', a.dataset.nav === page));
     const active = document.querySelector('.tab.on');
