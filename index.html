@@ -176,12 +176,12 @@
       linear-gradient(90deg, var(--bg) 0%, rgba(7,9,9,0.85) 25%, rgba(7,9,9,0.15) 65%, rgba(7,9,9,0.5) 100%),
       linear-gradient(180deg, rgba(7,9,9,0.3) 0%, transparent 40%, var(--bg) 97%);
   }
-  .hero-in { position:relative; z-index:1; padding:4.4rem 0 3.4rem; max-width:600px; }
+  .hero-in { position:relative; z-index:1; padding:5.2rem 0 4.4rem; max-width:620px; }
   .badge {
     display:inline-flex; align-items:center; gap:0.55rem;
     font-size:0.78rem; font-weight:500; color:var(--txt-2);
     border:1px solid var(--line-2); border-radius:2rem; padding:0.4rem 1rem;
-    background:rgba(7,9,9,0.5); margin-bottom:1.5rem;
+    background:rgba(7,9,9,0.5); margin-bottom:2.1rem;
   }
   .badge .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal); }
   .badge b { color:var(--teal); font-weight:600; }
@@ -191,20 +191,28 @@
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     text-wrap:balance;
   }
-  .hero .sub { font-size:0.98rem; color:var(--txt-2); line-height:1.65; margin:0.9rem 0 1.9rem; max-width:36em; }
+  .hero .sub { font-size:0.98rem; color:var(--txt-2); line-height:1.8; margin:1.5rem 0 2.5rem; max-width:36em; }
   .hero .sub b { color:var(--txt); font-weight:650; }
-  .hero-ctas { display:flex; gap:0.7rem; flex-wrap:wrap; margin-bottom:2.4rem; }
+  .hero-ctas { display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .hero-social { display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:4.6rem; }
+  .hero-social a {
+    display:inline-flex; align-items:center; gap:0.45rem;
+    font-size:0.82rem; font-weight:500; color:var(--txt-3);
+    transition:color 0.18s;
+  }
+  .hero-social a:hover { color:var(--teal); }
+  .hero-social svg { width:14px; height:14px; flex-shrink:0; }
   .who {
     display:inline-flex; align-items:baseline; gap:0.6rem; flex-wrap:wrap; width:fit-content;
-    margin-top:1.1rem; background:var(--surface-2); border:1px solid var(--line-2);
-    border-radius:2rem; padding:0.55rem 1.15rem;
+    margin-top:1.7rem; background:var(--surface-2); border:1px solid var(--line-2);
+    border-radius:2rem; padding:0.6rem 1.25rem;
   }
   .who b { font-size:0.98rem; }
   .who span { font-size:0.76rem; color:var(--teal); letter-spacing:0.06em; }
 
   .forwho {
     border-top:1px solid var(--line); position:relative; z-index:1;
-    padding:1.15rem 0 1.3rem; display:flex; flex-wrap:wrap; align-items:center; gap:0.7rem 1.1rem;
+    padding:1.4rem 0 1.55rem; display:flex; flex-wrap:wrap; align-items:center; gap:0.8rem 1.2rem;
   }
   .forwho .fw-l { font-size:0.64rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); }
   .forwho p { font-size:0.86rem; color:var(--txt-2); }
@@ -521,7 +529,7 @@
   }
   @media (max-width: 560px) {
     .hero-photo { width:100%; opacity:0.32; }
-    .hero-in { padding:3.2rem 0 2.6rem; }
+    .hero-in { padding:3.8rem 0 3.2rem; }
     .blocks, .outs, .gets, .mods, .incl, .tiers, .tools { grid-template-columns:1fr; }
     .block.wide { grid-column:auto; }
     .section { padding:2.4rem 0; }
@@ -566,6 +574,16 @@
         <div class="hero-ctas">
           <a class="cta" href="https://t.me/dianyych" target="_blank" rel="noopener">Записатись</a>
           <a class="cta ghost" href="#/pricing">Тарифи й формати</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/diana-soldatova-079063190/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://t.me/aientuziastka" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.47c-.144.646-.537.805-1.087.502l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.81l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.445c.537-.194 1.006.13.37.755z"/></svg>
+            ТГ канал
+          </a>
         </div>
       </div>
       <div class="forwho">
@@ -627,11 +645,11 @@
           <div class="tags"><span>Real-time demo</span><span>GDPR</span><span>AI-сорсер</span><span>Додаток для розсилок</span></div>
           <a class="cta ghost" href="#/program-2">Детальніше про програму →</a>
         </div>
-        <div class="vid mini">
+        <a class="vid mini" href="https://youtu.be/o-uY1zXcc34" target="_blank" rel="noopener">
           <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           <b>Фрагмент воркшопу</b>
-          <span>2–3 хвилини · відео скоро</span>
-        </div>
+          <span>Дивитись на YouTube</span>
+        </a>
       </div>
 
       <div class="psec">
@@ -675,7 +693,7 @@
         <div class="get">
           <div class="get-ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M10 9l4 2.5L10 14z"/></svg></div>
           <b>Відеозаписи та матеріали</b>
-          <p>Доступ протягом місяця з можливістю завантажити</p>
+          <p>Доступ протягом місяця</p>
         </div>
         <div class="get">
           <div class="get-ic"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h7M8 11h7"/></svg></div>
@@ -750,7 +768,7 @@
           </div>
           <div class="out">
             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-            <div><b>Карта AI-тулів</b><p>Розумієте, який інструмент для чого – і скільки він коштує</p></div>
+            <div><b>Карта AI-тулів</b><p>Розумієте, який інструмент для чого і скільки він коштує</p></div>
           </div>
           <div class="out">
             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
@@ -856,11 +874,11 @@
         </div>
 
         <div class="lbl">Фрагмент воркшопу</div>
-        <div class="vid mini">
+        <a class="vid mini" href="https://youtu.be/o-uY1zXcc34" target="_blank" rel="noopener">
           <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           <b>Відео з воркшопу</b>
-          <span>2–3 хвилини · скоро з'явиться тут</span>
-        </div>
+          <span>Дивитись на YouTube</span>
+        </a>
       </div>
 
       <aside class="buy">
